@@ -1,0 +1,157 @@
+:root {
+  --primary-color: #ff99cc;
+  --secondary-color: #ff66b2;
+  --text-color: #333;
+  --background-color: #fff0f5;
+  --button-background: #ffe6f2;
+  --button-hover-background: #ffb3d9;
+  --border-radius: 15px;
+  --box-shadow: 0 4px 6px rgba(255, 182, 193, 0.4);
+
+  font-family: 'Georgia', serif;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+}
+
+#app {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--secondary-color);
+}
+
+button {
+  border-radius: var(--border-radius);
+  border: 2px solid transparent;
+  padding: 0.8em 1.5em;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--button-background);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(255, 182, 193, 0.3);
+}
+button:hover {
+  background-color: var(--button-hover-background);
+  border-color: var(--primary-color);
+}
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 153, 204, 0.4);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item button {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.todo-item {
+  background-color: #ffe6f2;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+  box-shadow: var(--box-shadow);
+  gap: 0.5rem;
+}
+
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.5);
+}
+
+
+#error-message {
+  color: #ff4d4d;
+  display: none;
+  margin-top: 1rem;
+}
+
+.read-the-docs {
+  color: #888;
+  margin-top: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+@keyframes confetti {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), calc(var(--y) * -1)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color);
+  animation: confetti var(--duration) ease-out forwards;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+button:disabled {
+  background-color: #ffd9e6;
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffe6f2;
+    --text-color: #333;
+    --primary-color: #ff66b2;
+    --button-background: #ffe6f2;
+    --button-hover-background: #ffb3d9;
+  }
+  button {
+    background-color: var(--button-background);
+  }
+}
