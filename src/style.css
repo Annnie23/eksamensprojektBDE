@@ -30,6 +30,17 @@ h1 {
   margin-bottom: 2rem;
   font-family: 'Georgia', serif;
   letter-spacing: 1px;
+  display: inline-block; /* Gør det nemmere at rotere omkring center */
+  animation: spin 1s ease-out forwards;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 #app {
