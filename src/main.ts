@@ -25,6 +25,11 @@ const addTodo = (text: string): void => {
     todos.push(newTodo) // Tilføjer den nye todo til listen
     console.log("Todo added:", todos); // Logger den tilføjede todo til konsollen
     renderTodos() // Opdaterer visningen af todo-erne
+
+    const todoInput = document.getElementById('todo-input') as HTMLInputElement;
+    if (todoInput) {
+        todoInput.value = ''; // Sætter værdien til en tom streng
+    }
 }
 
 // Funktion til at opdatere visningen af todo-erne
