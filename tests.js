@@ -6,8 +6,8 @@ fixture ("Styling Tests")
 // Selectors
 const todoInput = Selector('input[placeholder="Add new todo"]');
 const addButton = Selector('button').withText('Add');
-const todoList = Selector('.todo-list'); // Juster klassen, hvis nødvendigt
-const todoItem = todoList.find('.todo-item'); // Juster klassen, hvis nødvendigt
+const todoList = Selector('.todo-list');
+const todoItem = todoList.find('.todo-item');
 
 test('Add a new todo item', async t => {
     const newTodoText = 'Buy groceries';
