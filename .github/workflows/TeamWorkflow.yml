@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: screenshots
-          path: .screenshots/
+          path: screenshots/
 
       - name: Store artifacts
         uses: actions/upload-artifact@v3
