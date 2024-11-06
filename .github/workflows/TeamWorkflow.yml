@@ -42,6 +42,13 @@ jobs:
       - name: Run tests
         run: testcafe chromium:headless tests.js
 
+      - name: Save screenshots
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: .screenshots/
+
       - name: Store artifacts
         uses: actions/upload-artifact@v3
         with:

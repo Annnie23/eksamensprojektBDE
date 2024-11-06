@@ -1,13 +1,13 @@
 import { Selector } from "testcafe";
 
 fixture ("Styling Tests")
-    .page("https://test.annnie01.one/todo/")
+    .page("http://localhost:5174/todo/")
 
 // Selectors
 const todoInput = Selector('input[placeholder="Add new todo"]');
 const addButton = Selector('button').withText('Add');
 const todoList = Selector('.todo-list');
-const todoItem = todoList.find('.todo-item');
+const todoItem = todoList.find('.todo-item'); 
 
 test('Add a new todo item', async t => {
     const newTodoText = 'Buy groceries';
@@ -45,6 +45,7 @@ test('Add, complete, and clear completed todos', async t => {
     await t.click(clearCompletedButton);
 
     // Tjek, at todoen er fjernet fra listen
+    await t.takeScreenshot();
     await t.expect(completedTodo.exists).notOk('The completed todo item should be cleared from the list');
 });
 
@@ -69,6 +70,7 @@ test('Add multiple todos, toggle all as completed, and clear completed todos', a
     await t.expect(secondTodo.exists).ok(`Todo item should exist with text "${secondTodoText}"`);
 
     // Brug "toggle all" knappen til at markere alle som fuldførte
+    await t.takeScreenshot();
     await t.click(toggleAllButton);
 
     // Klik på knappen til at rydde fuldførte todos
