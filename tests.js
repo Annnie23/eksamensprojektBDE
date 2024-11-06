@@ -1,7 +1,7 @@
 import { Selector } from "testcafe";
 
 fixture ("Styling Tests")
-    .page("http://localhost:5174/todo/")
+    .page("https://test.annnie01.one/todo/")
 
 // Selectors
 const todoInput = Selector('input[placeholder="Add new todo"]');
