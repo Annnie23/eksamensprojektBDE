@@ -62,8 +62,8 @@ test('Add multiple todos, toggle all as completed, and clear completed todos', a
 
     const firstTodo = todoItem.withText(firstTodoText);
     const secondTodo = todoItem.withText(secondTodoText);
-    const toggleAllButton = Selector('body > button:nth-child(4)');
-    const clearCompletedButton = Selector('body > button:nth-child(3)');
+    const toggleAllButton = Selector('#toggleAllButton');
+    const clearCompletedButton = Selector('#clearButton');
 
     // Tjek, at begge todo-items eksisterer
     await t.expect(firstTodo.exists).ok(`Todo item should exist with text "${firstTodoText}"`);

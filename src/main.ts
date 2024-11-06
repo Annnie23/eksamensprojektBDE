@@ -159,11 +159,13 @@ const toggleAllTodos = (): void => {
 
 // Tilføjer knapper til at rydde og skifte alle todo'er til siden
 const clearButton = document.createElement('button');
+clearButton.id = 'clearButton'; // ID til knappen
 clearButton.textContent = 'Clear Completed Todos'; // Tekst på knappen
 clearButton.addEventListener('click', clearCompletedTodos); // Tilføjer event listener til knappen
 document.body.appendChild(clearButton); // Tilføjer knappen til body
 
 const toggleAllButton = document.createElement('button');
+toggleAllButton.id = 'toggleAllButton'; // ID til knappen
 toggleAllButton.textContent = 'Toggle All Todos'; // Tekst på knappen
 toggleAllButton.addEventListener('click', toggleAllTodos); // Tilføjer event listener til knappen
 document.body.appendChild(toggleAllButton); // Tilføjer knappen til body
