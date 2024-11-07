@@ -43,10 +43,6 @@ test('Add, complete, and clear completed todos', async t => {
 
     // Klik på knappen til at rydde fuldførte todos
     await t.click(clearCompletedButton);
-
-    // Tjek, at todoen er fjernet fra listen
-    // await t.takeScreenshot();
-    // await t.expect(completedTodo.exists).notOk('The completed todo item should be cleared from the list');
 });
 
 test('Add multiple todos, toggle all as completed, and clear completed todos', async t => {

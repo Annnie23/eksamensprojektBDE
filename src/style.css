@@ -29,7 +29,7 @@ h1 {
   color: var(--primary-color);
   font-family: 'Georgia', serif;
   letter-spacing: 1px;
-  display: inline-block; /* Gør det nemmere at rotere omkring center */
+  display: inline-block; 
   animation: spin 1s ease-out forwards;
 }
 
