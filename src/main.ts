@@ -2,9 +2,9 @@ import './style.css'
 
 // Definerer en TypeScript-grænseflade (interface) for en todo
 interface Todo {
-    id: number;        // Unik identifikator for todo'en
-    title: string;     // Titel på todo'en
-    completed: boolean; // Angiver om todo'en er fuldført eller ej
+    id: number;        
+    title: string;     
+    completed: boolean;
 }
 
 // Initialiserer en tom liste til at holde todo-objekter
@@ -18,27 +18,27 @@ const todoForm = document.querySelector('.todo-form') as HTMLFormElement
 // Funktion til at tilføje en ny todo
 const addTodo = (text: string): void => {
     const newTodo: Todo = {
-        id: Date.now(),    // Genererer en unik id baseret på tidsstemplet
-        title: text,       // Titlen tildeles fra input
-        completed: false   // Sætter startstatus for todo'en til ikke færdig
+        id: Date.now(),    
+        title: text,       
+        completed: false   
     }
-    todos.push(newTodo) // Tilføjer den nye todo til listen
-    console.log("Todo added:", todos); // Logger den tilføjede todo til konsollen
-    renderTodos() // Opdaterer visningen af todo-erne
+    todos.push(newTodo) 
+    console.log("Todo added:", todos); 
+    renderTodos() 
 
     const todoInput = document.getElementById('todo-input') as HTMLInputElement;
     if (todoInput) {
-        todoInput.value = ''; // Sætter værdien til en tom streng
+        todoInput.value = ''; 
     }
 }
 
 // Funktion til at opdatere visningen af todo-erne
 const renderTodos = (): void => {
-    todoList.innerHTML = '' // Rydder eksisterende indhold i todo-listen
+    todoList.innerHTML = '' 
   
     todos.forEach(todo => {
-        const li = document.createElement('li') // Opretter et nyt listeelement
-        li.className = 'todo-item' // Tildeler en CSS-klasse til listeelementet
+        const li = document.createElement('li') 
+        li.className = 'todo-item' 
         li.innerHTML = `
             <span style="text-decoration: ${todo.completed ? 'line-through' : 'none'};">
               ${todo.title}
@@ -47,10 +47,10 @@ const renderTodos = (): void => {
             <button id="editBtn">Edit</button>
             <button id="toggleBtn">Completed</button>
         `; // Genererer HTML-indhold for hvert todo-element
-        addRemovebuttonEventListener(li, todo.id) // Tilføjer event listener til fjern-knappen
-        addEditbuttonEventListener(li, todo.id) // Tilføjer event listener til rediger-knappen
-        addTogglebuttonEventListener(li, todo.id) // Tilføjer event listener til toggle-knappen
-        todoList.appendChild(li) // Tilføjer listeelementet til todo-listen
+        addRemovebuttonEventListener(li, todo.id) 
+        addEditbuttonEventListener(li, todo.id) 
+        addTogglebuttonEventListener(li, todo.id) 
+        todoList.appendChild(li) 
     })
 }
 
@@ -60,9 +60,9 @@ renderTodos()
 // Tilføjer en event listener til formularen, som tilføjer en ny todo, når den bliver indsendt
 todoForm.addEventListener('submit', (e) => {
     e.preventDefault() // Forhindrer formularen i at sende en HTTP-anmodning
-    const text = todoInput.value.trim() // Får værdien fra inputfeltet og fjerner overflødige mellemrum
+    const text = todoInput.value.trim() 
     if (text !== '') {
-        addTodo(text) // Tilføjer den nye todo, hvis input ikke er tom
+        addTodo(text) 
     }
 })
 
@@ -74,8 +74,8 @@ const addRemovebuttonEventListener = (li: HTMLLIElement, id: number) => {
 
 // Funktion til at fjerne en todo fra listen baseret på dens id
 const removeTodo = (id: number) => {
-    todos = todos.filter(todo => todo.id !== id) // Filtrerer listen for at fjerne todo'en
-    renderTodos() // Opdaterer visningen
+    todos = todos.filter(todo => todo.id !== id) 
+    renderTodos() 
 }
 
 // Funktion til at tilføje en event listener til rediger-knappen
@@ -88,10 +88,10 @@ const addEditbuttonEventListener = (li: HTMLLIElement, id: number) => {
 const editTodo = (id: number) => {
     const todo = todos.find(todo => todo.id === id)
     if (todo) {
-        const text = prompt("Edit todo", todo.title) // Vis en prompt for at ændre titlen
+        const text = prompt("Edit todo", todo.title) 
         if (text) {
-            todo.title = text // Opdaterer todo'ens titel
-            renderTodos() // Opdaterer visningen
+            todo.title = text 
+            renderTodos() 
         }
     }
 } 
@@ -102,16 +102,16 @@ const initializeColorPicker = (): void => {
     if (colorPicker) {
         colorPicker.addEventListener('input', (event: Event) => {
             const target = event.target as HTMLInputElement;
-            changeBackgroundColor(target.value) // Ændrer baggrundsfarven baseret på vælgerens værdi
+            changeBackgroundColor(target.value) 
         })
     } else {
-        console.error("Color picker not found") // Logger en fejl, hvis farvevælgeren ikke findes
+        console.error("Color picker not found") 
     }
 }
 
 // Funktion til at ændre baggrundsfarven
 const changeBackgroundColor = (color: string): void => {
-    document.body.style.backgroundColor = color // Ændrer baggrundsfarven på body-elementet
+    document.body.style.backgroundColor = color 
 }
 
 // Kalder farvevælger-initieringsfunktionen, når dokumentet er indlæst
@@ -129,62 +129,61 @@ const addTogglebuttonEventListener = (li: HTMLLIElement, id: number) => {
 const toggleTodo = (id: number) => {
     const todo = todos.find(todo => todo.id === id);
     if (todo) {
-        todo.completed = !todo.completed; // Skifter færdig-status
-        renderTodos(); // Opdaterer visningen
+        todo.completed = !todo.completed; 
+        renderTodos(); 
 
         if (todo.completed) {
-            createConfetti();  // Trigger konfetti, når todo'en er fuldført
+            createConfetti();  
         }
     }
 }
 
 // Funktion til at rydde alle fuldførte todo'er
 const clearCompletedTodos = (): void => {
-    todos = todos.filter(todo => !todo.completed); // Filtrerer listen for at fjerne fuldførte todo'er
-    renderTodos(); // Opdaterer visningen
+    todos = todos.filter(todo => !todo.completed); 
+    renderTodos(); 
 }
 
 // Funktion til at skifte status på alle todo'er
 const toggleAllTodos = (): void => {
-    const allCompleted = todos.every(todo => todo.completed); // Tjekker om alle todo'er er fuldførte
-    todos.forEach(todo => todo.completed = !allCompleted);    // Skifter status på alle baseret på tjekket
+    const allCompleted = todos.every(todo => todo.completed); 
+    todos.forEach(todo => todo.completed = !allCompleted);   
 
-    renderTodos(); // Opdaterer visningen
+    renderTodos(); 
 
-    // Trigger konfetti, hvis alle todo'er er fuldførte efter toggle
     if (todos.every(todo => todo.completed)) {
-        createConfetti();  // Trigger konfetti for at markere, at alle opgaver er fuldførte
+        createConfetti();  
     }
 };
 
 // Tilføjer knapper til at rydde og skifte alle todo'er til siden
 const clearButton = document.createElement('button');
-clearButton.id = 'clearButton'; // ID til knappen
-clearButton.textContent = 'Clear Completed Todos'; // Tekst på knappen
-clearButton.addEventListener('click', clearCompletedTodos); // Tilføjer event listener til knappen
-document.body.appendChild(clearButton); // Tilføjer knappen til body
+clearButton.id = 'clearButton'; 
+clearButton.textContent = 'Clear Completed Todos'; 
+clearButton.addEventListener('click', clearCompletedTodos); 
+document.body.appendChild(clearButton); 
 
 const toggleAllButton = document.createElement('button');
-toggleAllButton.id = 'toggleAllButton'; // ID til knappen
-toggleAllButton.textContent = 'Toggle All Todos'; // Tekst på knappen
-toggleAllButton.addEventListener('click', toggleAllTodos); // Tilføjer event listener til knappen
-document.body.appendChild(toggleAllButton); // Tilføjer knappen til body
+toggleAllButton.id = 'toggleAllButton'; 
+toggleAllButton.textContent = 'Toggle All Todos'; 
+toggleAllButton.addEventListener('click', toggleAllTodos); 
+document.body.appendChild(toggleAllButton); 
 
 // Funktion til at skabe konfetti
 const createConfetti = (): void => {
-    const confettiCount = 50; // Antallet af konfetti
+    const confettiCount = 50; 
     for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
-        confetti.className = 'confetti'; // Tildeler en CSS-klasse til konfettien
+        confetti.className = 'confetti'; 
 
         // Randomiserer farve, størrelse, retning og varighed
         confetti.style.setProperty('--color', getRandomColor());
         confetti.style.setProperty('--size', `${Math.random() * 10 + 5}px`);
-        confetti.style.setProperty('--x', `${Math.random() * 200 - 100}vw`); // Vandret retning
-        confetti.style.setProperty('--y', `${Math.random() * 100 + 50}vh`);  // Vertikal retning (opad)
-        confetti.style.setProperty('--duration', `${Math.random() * 2 + 1}s`); // Random animation duration
+        confetti.style.setProperty('--x', `${Math.random() * 200 - 100}vw`); 
+        confetti.style.setProperty('--y', `${Math.random() * 100 + 50}vh`);  
+        confetti.style.setProperty('--duration', `${Math.random() * 2 + 1}s`); 
 
-        document.body.appendChild(confetti); // Tilføjer konfetti til body
+        document.body.appendChild(confetti); 
 
         // Fjerner konfettien efter animationen er færdig
         setTimeout(() => confetti.remove(), 3000);
@@ -194,5 +193,5 @@ const createConfetti = (): void => {
 // Funktion til at få en tilfældig farve til konfettien
 const getRandomColor = (): string => {
     const colors = ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#ff99ac', '#ffb3c1', '#ffccd5', '#ffebef', '#ffd700', '#ff5733', '#c70039', '#900c3f', '#581845'];
-    return colors[Math.floor(Math.random() * colors.length)]; // Vælger en tilfældig farve fra listen
+    return colors[Math.floor(Math.random() * colors.length)];
 };
